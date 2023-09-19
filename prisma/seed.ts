@@ -55,6 +55,47 @@ Transcrição:
 '''`.trim()
     }
   })
+
+  await prisma.prompt.create({
+    data: {
+      title: 'Resumo do Vídeo',
+      template: `Seu papel é gerar um resumo sucinto de um Vídeo.
+
+Abaixo você receberá uma transcrição desse vídeo, use essa transcrição para gerar e retornar o resumo.
+
+
+Transcrição:
+'''
+{transcription}
+'''`.trim()
+    }
+  })
+
+  await prisma.prompt.create({
+    data: {
+      title: 'Tradução de um vídeo para inglês',
+      template: `Seu papel é gerar e retornar a tradução do vídeo para o inglês.
+
+
+Transcrição:
+'''
+{transcription}
+'''`.trim()
+    }
+  })
+
+  await prisma.prompt.create({
+    data: {
+      title: 'Tradução de um vídeo para português',
+      template: `Seu papel é gerar e retornar a tradução do vídeo para português.
+
+      
+Transcrição:
+'''
+{transcription}
+'''`.trim()
+    }
+  })
 }
 
 main()
